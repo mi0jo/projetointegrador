@@ -10,18 +10,42 @@
 
      <?php
       require("../include/referenciashead.php");
+         
       ?>
 
     
 </head>
 
+
 <body>
+    <?php if (isset($_GET['status']) && $_GET['status'] === 'erro'): ?>
+  <div id="erroLogin" class="alert alert-danger text-center" role="alert">
+    <i class="fas fa-exclamation-triangle me-2"></i>
+    Usuário ou senha inválidos!
+  </div>
+
+  <script>
+    // Remove a mensagem após 4 segundos
+    setTimeout(() => {
+      const erro = document.getElementById("erroLogin");
+      if (erro) erro.style.display = "none";
+
+      // Limpa a URL para evitar que o erro reapareça
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }, 4000);
+  </script>
+<?php endif; ?>
+
+<form method="POST" action="../login/autenticar.php">
+
    <?php
       require("../include/spinner.php");
 
    require("../include/navbardeslogado.php");
        require("../include/modalsearch.php");
 
+      
+      
    ?>
 
    
@@ -44,21 +68,18 @@
                 </div>
                 <div class="card-body login-body">
                     <!-- Email Login Form -->
-                    <form id="loginForm">
+                    <form id="loginForm" action="../login/autenticar.php" method="POST">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="seu@email.com" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="seu@email.com" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="password" placeholder="Digite sua senha" required>
-                            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                            <input type="password" class="form-control" id="password" name= "password" placeholder="Digite sua senha" required>
+                            
                         </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">Lembrar de mim</label>
-                        </div>
-                        <button type="submit" class="btn btn-login text-white w-100 py-2">Entrar</button>
+                       
+<button type="submit" name = "login"class="btn btn-login text-white w-100 py-2">Entrar</button>
                     </form>
 
                     <!-- Divider -->
@@ -74,12 +95,15 @@
             </div>
         </div>
     </div>
+
+
     <!-- Login Form End -->
   <?php
       require("../include/copyright.php");
  require("../include/bibliotecajava.php");
    ?>
     
+ 
 
 </body>
 </html>

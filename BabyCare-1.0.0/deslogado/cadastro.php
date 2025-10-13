@@ -1,30 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="utf-8">
     <title>Cadastro - BleedWithDignity</title>
     <meta content="cadastro, criar conta, bleedwithdignity" name="keywords">
     <meta content="Crie sua conta no BleedWithDignity para acessar todos os recursos" name="description">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <?php
-   require("../include/referenciashead.php");
-   ?>
-
-
+    <?php require("../include/referenciashead.php"); ?>
 </head>
-
 <body>
-    
-   <?php
-      require("../include/spinner.php");
-
-   require("../include/navbardeslogado.php");
-      require("../include/modalsearch.php");
-
-   ?>
-   
+    <?php
+    require("../include/spinner.php");
+    require("../include/navbardeslogado.php");
+    require("../include/modalsearch.php");
+    ?>
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
@@ -43,30 +32,30 @@
                     <h3><i class="fas fa-user-plus me-2"></i>Cadastro</h3>
                 </div>
                 <div class="card-body register-body">
-                    <form id="registerForm">
+                    <form id="registerForm" method="POST" action="../login/cadastrar.php">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="firstName" class="form-label">Nome</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="Seu nome" required>
+                                    <input type="text" class="form-control" id="firstName" name="nome" placeholder="Seu nome" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="lastName" class="form-label">Sobrenome</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Seu sobrenome" required>
+                                    <input type="text" class="form-control" id="lastName" name="sobrenome" placeholder="Seu sobrenome" required>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="seu@email.com" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="seu@email.com" required>
                         </div>
 
                         <div class="form-group">
                             <label for="password" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="password" placeholder="Crie uma senha" required>
+                            <input type="password" class="form-control" id="password" name="senha" placeholder="Crie uma senha" required>
                             <div class="password-strength">
                                 <div class="password-strength-bar" id="passwordStrengthBar"></div>
                             </div>
@@ -75,16 +64,16 @@
 
                         <div class="form-group">
                             <label for="confirmPassword" class="form-label">Confirme sua senha</label>
-                            <input type="password" class="form-control" id="confirmPassword" placeholder="Digite a senha novamente" required>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmar_senha" placeholder="Digite a senha novamente" required>
                         </div>
 
                         <div class="form-group">
                             <label for="birthDate" class="form-label">Data de Nascimento</label>
-                            <input type="date" class="form-control" id="birthDate" required>
+                            <input type="date" class="form-control" id="birthDate" name="nascimento" required>
                         </div>
 
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="acceptTerms" required>
+                            <input type="checkbox" class="form-check-input" id="acceptTerms" name="termos" required>
                             <label class="form-check-label terms-text" for="acceptTerms">
                                 Eu concordo com os <a href="#" class="text-primary">Termos de Serviço</a> e <a href="#" class="text-primary">Política de Privacidade</a>
                             </label>
@@ -103,12 +92,8 @@
     <!-- Register Form End -->
 
     <?php
-      require("../include/copyright.php");
+    require("../include/copyright.php");
     require("../include/bibliotecajava.php");
-   ?>
-
-
-    
-   
+    ?>
 </body>
 </html>

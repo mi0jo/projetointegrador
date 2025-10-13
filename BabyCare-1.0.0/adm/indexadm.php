@@ -8,6 +8,7 @@
     <meta content="admin, painel, administrador" name="keywords">
     <meta content="Painel de administração do BleedWithDignity" name="description">
 
+
     <?php
    require("../include/referenciashead.php");
    ?>
@@ -104,9 +105,9 @@
                                 <li class="nav-item mb-2">
                                     <a class="nav-link" href="#configuracoes"><i class="fas fa-cog me-2"></i> Configurações</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-danger" href="#"><i class="fas fa-sign-out-alt me-2"></i> Sair</a>
-                                </li>
+<a class="nav-link text-danger" href="../login/logout.php">
+  <i class="fas fa-sign-out-alt me-2"></i> Sair
+</a>
                             </ul>
                         </div>
                     </div>

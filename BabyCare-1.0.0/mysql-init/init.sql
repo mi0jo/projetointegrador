@@ -1,13 +1,15 @@
+CREATE DATABASE IF NOT EXISTS bleedwithdignity_db;
+USE bleedwithdignity_db;
 
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     email_confirmado BOOLEAN DEFAULT FALSE,
-    senha_hash VARCHAR(255) NOT NULL,
+    Data_Nascimento DATE,
+    senha VARCHAR(100) NOT NULL,
     tipo ENUM('admin', 'user') NOT NULL
 );
-
 
 CREATE TABLE forum_posts (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -17,7 +19,6 @@ CREATE TABLE forum_posts (
     data_postagem DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (autor_id) REFERENCES users(id)
 );
-
 
 CREATE TABLE forum_respostas (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -29,7 +30,6 @@ CREATE TABLE forum_respostas (
     FOREIGN KEY (autor_id) REFERENCES users(id)
 );
 
-
 CREATE TABLE materia (
     id INT PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(255) NOT NULL,
@@ -39,7 +39,6 @@ CREATE TABLE materia (
     data DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (autor_id) REFERENCES users(id)
 );
-
 
 CREATE TABLE calendario_menstrual (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -52,7 +51,6 @@ CREATE TABLE calendario_menstrual (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-
 CREATE TABLE forum_favoritos (
     id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
@@ -60,7 +58,6 @@ CREATE TABLE forum_favoritos (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (post_id) REFERENCES forum_posts(id)
 );
-
 
 CREATE TABLE curtidas_materias (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -70,6 +67,6 @@ CREATE TABLE curtidas_materias (
     FOREIGN KEY (materia_id) REFERENCES materia(id)
 );
 
-INSERT INTO users (nome, email, email_confirmado, senha_hash, tipo) VALUES
-('Administrador Geral', 'admin@sistema.com', TRUE, 'hash_senha_admin', 'admin');
-
+-- Inserção do usuário admin com senha visível (exemplo: 'admin123')
+INSERT INTO users (nome, email, email_confirmado, senha, tipo) VALUES
+('Administrador Geral', 'admin@sistema.com', TRUE, 'adm123', 'admin');
