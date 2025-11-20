@@ -6,6 +6,7 @@ if (!$mysqli) {
     die("Erro na conexão com o banco de dados: " . mysqli_connect_error());
 }
 
+
 if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($mysqli, $_POST['email']);
     $senha = $_POST['password'];

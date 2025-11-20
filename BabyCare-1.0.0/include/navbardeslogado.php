@@ -41,7 +41,6 @@
                             
                         </div>
                     </div>
-                    <button class="btn-search btn btn-primary btn-md-square rounded-circle me-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-white"></i></button>
                     <a href="../deslogado/login.php" class="btn btn-primary btn-md-square rounded-circle"><i class="fas fa-user text-white"></i></a>
                 </div>
             </nav>
