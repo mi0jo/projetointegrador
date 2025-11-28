@@ -287,55 +287,7 @@
                         </div>
                     </div>
                     
-                    <!-- Comment Section -->
-                    <div class="comment-section wow fadeIn" data-wow-delay="0.7s">
-                        <h3 class="mb-4"><i class="fas fa-comments text-secondary me-2"></i>Compartilhe sua experiência</h3>
-                        <p>Você já usa produtos menstruais sustentáveis? Tem alguma dica para quem quer começar? Conte para a comunidade!</p>
-                        
-                        <!-- Existing Comments -->
-                        <div class="comment wow fadeIn" data-wow-delay="0.8s">
-                            <div class="d-flex">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User" class="user-avatar">
-                                <div>
-                                    <h5 class="mb-1">Ana Claudia</h5>
-                                    <p class="text-muted small mb-2">Postado em 15/06/2023</p>
-                                    <p>Uso coletor há 3 anos e foi a melhor decisão! No início foi difícil me adaptar, mas hoje não troco por nada. Economizei muito dinheiro e lixo. Dica: assistam tutoriais no YouTube para aprender a colocar corretamente.</p>
-                                    
-                                    <div class="comment-actions">
-                                        <span class="action-btn like-btn"><i class="fas fa-heart me-1"></i> Curtir (24)</span>
-                                        <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="comment wow fadeIn" data-wow-delay="0.9s">
-                            <div class="d-flex">
-                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" class="user-avatar">
-                                <div>
-                                    <h5 class="mb-1">Juliana Santos</h5>
-                                    <p class="text-muted small mb-2">Postado em 10/06/2023</p>
-                                    <p>Comecei com absorventes de pano e depois migrei para as calcinhas absorventes. Demorei 6 meses para fazer a transição completa, mas valeu a pena! Minha pele agradece - não tenho mais irritações. Para quem tem dúvidas: comecem usando em casa nos dias de fluxo mais leve.</p>
-                                    
-                                    <div class="comment-actions">
-                                        <span class="action-btn like-btn"><i class="fas fa-heart me-1"></i> Curtir (15)</span>
-                                        <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Comment Form -->
-                        <div class="comment-form wow fadeIn" data-wow-delay="1s">
-                            <h5 class="mb-3">Deixe seu comentário</h5>
-                            <form id="add-comment">
-                                <div class="mb-3">
-                                    <textarea class="form-control" rows="4" placeholder="Compartilhe suas experiências com produtos menstruais sustentáveis..." required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Enviar comentário</button>
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
                 
                 <!-- Sidebar Column -->

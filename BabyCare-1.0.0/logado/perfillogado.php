@@ -3,14 +3,14 @@ session_start();
 
 
 // Verificar se o usuário está logado
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['user_id'])) {
     header('Location: ../deslogado/login.php');
     exit();
 }
 
 include("../include/conexao.php");
-$stmt = $mysqli->prepare("SELECT * FROM users WHERE id = ?");
-$stmt->bind_param("i", $_SESSION['id']);
+$stmt = $mysqli->prepare("SELECT * FROM users WHERE user_id = ?");
+$stmt->bind_param("i", $_SESSION['user_id']);
 $stmt->execute();
 $result = $stmt->get_result();
 $usuario = $result->fetch_assoc();
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
         mkdir($uploadDir, 0755, true);
     }
     
-    $fileName = 'user_' . $_SESSION['id'] . '_' . time() . '_' . uniqid();
+    $fileName = 'user_' . $_SESSION['user_id'] . '_' . time() . '_' . uniqid();
     $fileExtension = strtolower(pathinfo($_FILES['foto_perfil']['name'], PATHINFO_EXTENSION));
     $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
     
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
                 
                 $updateSql = "UPDATE users SET foto_perfil = ? WHERE id = ?";
                 $updateStmt = $mysqli->prepare($updateSql);
-                $updateStmt->bind_param("si", $foto_path, $_SESSION['id']);
+                $updateStmt->bind_param("si", $foto_path, $_SESSION['user_id']);
                 
                 if ($updateStmt->execute()) {
                     $_SESSION['success_message'] = "Foto de perfil atualizada com sucesso!";
@@ -70,8 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
 }
 
 // Buscar dados do usuário no banco de dados
-$user_id = $_SESSION['id'];
-$sql = "SELECT * FROM users WHERE id = ?";
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT * FROM users WHERE user_id = ?";
 $stmt = $mysqli->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -275,12 +275,7 @@ $mysqli->close();
                                 <li class="nav-item">
                                     <a class="nav-link" href="#privacidade" data-bs-toggle="tab"><i class="fas fa-lock me-2"></i>Privacidade</a>
                                 </li>
-                                <a href="../logado/logout.php" 
-   class="btn btn-primary btn-md-square rounded-circle p-0 d-flex justify-content-center align-items-center"
-   style="width: 40px; height: 40px;">
-    <i class="fas fa-sign-out-alt text-white"></i>
-</a>
-
+                              
                             </ul>
                         </div>
                         <div class="profile-card-body">
@@ -352,7 +347,7 @@ $mysqli->close();
                                 <div class="tab-pane fade" id="privacidade">
                                     <h5 class="mb-4">Configurações de Privacidade</h5>
                                     
-                                    
+                                
                                     <div class="mb-4">
                                         <h6>Compartilhamento de dados</h6>
                                         <div class="form-check form-switch mb-2">

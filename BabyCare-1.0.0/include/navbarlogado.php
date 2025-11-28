@@ -23,19 +23,19 @@
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Educação Sexual</a>
                             <div class="dropdown-menu m-0 bg-secondary rounded-0">
                                 <a href="../logado/dignidadelogado.php" class="dropdown-item">O que é Dignidade Menstrual?</a>
-                                <a href="saudesexuallogado.php" class="dropdown-item">Saúde Sexual e Reprodutiva</a>
+                                <a href="../logado/saudesexuallogado.php" class="dropdown-item">Saúde Sexual e Reprodutiva</a>
                                 <a href="produtoslogado.php" class="dropdown-item">Produtos Menstruais para Todos</a>
-                                <a href="tiposdeabsorventeslogado.php" class="dropdown-item">Tipos de Absorventes</a>
-                                <a href="ciclomenstruallogado.php" class="dropdown-item">Ciclo Menstrual</a>
-                                <a href="saudelogado.php" class="dropdown-item">Saúde e Higiene Menstrual</a>
-                                <a href="sintomaslogado.php" class="dropdown-item">Sintomas e Mudanças Menstruais</a>
-                                <a href="sustentabilidadelogado.php" class="dropdown-item">Sustentabilidade Ambiental</a>
-                                <a href="pobrezalogado.php" class="dropdown-item">Pobreza Menstrual</a>
+                                <a href="../logado/tiposdeabsorventeslogado.php" class="dropdown-item">Tipos de Absorventes</a>
+                                <a href="../logado/ciclomenstruallogado.php" class="dropdown-item">Ciclo Menstrual</a>
+                                <a href="../logado/saudelogado.php" class="dropdown-item">Saúde e Higiene Menstrual</a>
+                                <a href="../logado/sintomaslogado.php" class="dropdown-item">Sintomas e Mudanças Menstruais</a>
+                                <a href="../logado/sustentabilidadelogado.php" class="dropdown-item">Sustentabilidade Ambiental</a>
+                                <a href="../logado/pobrezalogado.php" class="dropdown-item">Pobreza Menstrual</a>
                             </div>
                         </div>
-                        <a href="calendariologado.php" class="nav-item nav-link mx-2">Calendário Menstrual</a>
-                        <a href="forumlogado.php" class="nav-item nav-link">Fórum</a>
-                        <a href="contatologado.php" class="nav-item nav-link mx-2 ">Contato</a>
+                        <a href="../logado/calendariologado.php" class="nav-item nav-link mx-2">Calendário Menstrual</a>
+                        <a href="../ajax/forumlogado.php" class="nav-item nav-link">Fórum</a>
+                        <a href="../logado/contatologado.php" class="nav-item nav-link mx-2 ">Contato</a>
                                 </div>
                        <div class="d-flex me-4">
     <div id="phone-tada" class="d-flex align-items-center justify-content-center">

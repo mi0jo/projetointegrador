@@ -1,5 +1,8 @@
 <div class="d-flex align-items-center">
-    
+      
+                                <a href="../login/logout.php" class="btn btn-primary btn-md-square rounded-circle p-0 d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+    <i class="fas fa-sign-out-alt text-white"></i>
+</a>
     
     <!-- Botão de perfil -->
     <a href="../logado/perfillogado.php" 

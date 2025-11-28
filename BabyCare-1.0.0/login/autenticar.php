@@ -2,14 +2,9 @@
 session_start();
 include("../include/conexao.php");
 
-if (!$mysqli) {
-    die("Erro na conexão com o banco de dados: " . mysqli_connect_error());
-}
-
-
 if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($mysqli, $_POST['email']);
-    $senha = $_POST['password'];
+    $senha = trim($_POST['password']); // remove espaços extras
 
     $sql = "SELECT * FROM users WHERE email = ?";
     $stmt = $mysqli->prepare($sql);
@@ -21,10 +16,10 @@ if (isset($_POST['login'])) {
         $user = $result->fetch_assoc();
 
         if ($senha === $user['senha']) {
-            $_SESSION['id'] = $user['id'];
-            $_SESSION['nome'] = $user['nome'];
-            $_SESSION['tipo'] = $user['tipo'];
-            $_SESSION['logado'] = true;
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['nome']    = $user['nome'];
+            $_SESSION['tipo']    = $user['tipo'];
+            $_SESSION['logado']  = true;
 
             if ($user['tipo'] === 'admin') {
                 header("Location: ../adm/indexadm.php");
@@ -33,17 +28,14 @@ if (isset($_POST['login'])) {
             }
             exit();
         } else {
-            // Senha incorreta
             header("Location: ../deslogado/login.php?status=erro");
             exit();
         }
     } else {
-        // Usuário não encontrado
         header("Location: ../deslogado/login.php?status=erro");
         exit();
     }
 } else {
-    // Formulário não enviado corretamente
     header("Location: ../deslogado/login.php");
     exit();
 }

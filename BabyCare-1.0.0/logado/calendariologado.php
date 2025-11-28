@@ -1,3 +1,34 @@
+<?php
+session_start();
+require("../include/conexao.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (!isset($_SESSION['user_id'])) {
+        die("Usuário não está logado.");
+    }
+
+    $user_id     = $_SESSION['user_id']; 
+    $data_inicio = $_POST['data_inicio'];
+    $data_fim    = $_POST['data_fim'] ?? null;
+    $fluxo       = $_POST['fluxo'] ?? null;
+    $humor       = $_POST['humor'] ?? null;
+    $remedios    = $_POST['remedios'] ?? null;
+
+    $sql = "INSERT INTO calendario_menstrual 
+            (user_id, data_inicio, data_fim, fluxo, humor, remedios) 
+            VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("isssss", $user_id, $data_inicio, $data_fim, $fluxo, $humor, $remedios);
+
+    if ($stmt->execute()) {
+        header("Location: calendariologado.php?sucesso=1");
+        exit();
+    } else {
+        echo "Erro: " . $stmt->error;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -10,9 +41,11 @@
  <?php
    require("../include/referenciashead.php");
    ?>
-        
+       
+
         <!-- FullCalendar CSS -->
         <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+        
 
     </head>
 
@@ -50,102 +83,35 @@
                 <div id="calendar-container">
                     <div id="calendar"></div>
                     
-                    
-                    <div id="sidebar">
-                        <h4 class="text-center mb-4">Registros Diários</h4>
-                        
-                        <!-- Fluxo Menstrual -->
-                        <div class="icon-btn" onclick="toggleDropdown('fluxo-dropdown')">
-                            <i class="fas fa-tint"></i>
-                            <span>Fluxo Menstrual</span>
-                        </div>
-                        <div id="fluxo-dropdown" class="dropdown-content">
-                            <p>Selecione a intensidade:</p>
-                            <div class="text-center">
-                                <span class="blood-drop" onclick="selectBloodDrop(1)">💧</span>
-                                <span class="blood-drop" onclick="selectBloodDrop(2)">💧</span>
-                                <span class="blood-drop" onclick="selectBloodDrop(3)">💧</span>
-                                <span class="blood-drop" onclick="selectBloodDrop(4)">💧</span>
-                                <span class="blood-drop" onclick="selectBloodDrop(5)">💧</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Remédios -->
-                        <div class="icon-btn" onclick="toggleDropdown('remedios-dropdown')">
-                            <i class="fas fa-pills"></i>
-                            <span>Remédios</span>
-                        </div>
-                        <div id="remedios-dropdown" class="dropdown-content">
-                            <p>Registrar medicamento:</p>
-                            <input type="text" class="form-control mb-2" placeholder="Nome do remédio">
-                            <button class="btn btn-sm btn-primary">Adicionar</button>
-                        </div>
-                        
-                        <!-- Sintomas -->
-                        <div class="icon-btn" onclick="toggleDropdown('sintomas-dropdown')">
-                            <i class="fas fa-thermometer-half"></i>
-                            <span>Sintomas</span>
-                        </div>
-                        <div id="sintomas-dropdown" class="dropdown-content">
-                            <p>Selecione os sintomas:</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="cramps">
-                                <label class="form-check-label" for="cramps">Cólicas</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="headache">
-                                <label class="form-check-label" for="headache">Dor de cabeça</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="backache">
-                                <label class="form-check-label" for="backache">Dor nas costas</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="nausea">
-                                <label class="form-check-label" for="nausea">Náusea</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="fatigue">
-                                <label class="form-check-label" for="fatigue">Fadiga</label>
-                            </div>
-                        </div>
-                        
-                        <!-- Humor -->
-                        <div class="icon-btn" onclick="toggleDropdown('humor-dropdown')">
-                            <i class="fas fa-smile"></i>
-                            <span>Humor</span>
-                        </div>
-                        <div id="humor-dropdown" class="dropdown-content">
-                            <p>Como você está se sentindo?</p>
-                            <div class="text-center">
-                                <span class="emoji-option" onclick="selectEmoji('😊')">😊</span>
-                                <span class="emoji-option" onclick="selectEmoji('😢')">😢</span>
-                                <span class="emoji-option" onclick="selectEmoji('😡')">😡</span>
-                                <span class="emoji-option" onclick="selectEmoji('😴')">😴</span>
-                                <span class="emoji-option" onclick="selectEmoji('😌')">😌</span>
-                                <span class="emoji-option" onclick="selectEmoji('😐')">😐</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Legenda -->
-                <div class="legend">
-                    <div class="legend-item">
-                        <div class="legend-color period-color"></div>
-                        <span>Período Menstrual</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color fertility-color"></div>
-                        <span>Janela da Fertilidade</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color ovulation-color"></div>
-                        <span>Dia da Ovulação</span>
-                    </div>
-                </div>
+                    <!-- Formulário para registrar -->
+                <form method="POST" class="mt-4">
+                    <label>Data início:</label>
+                    <input type="date" name="data_inicio" required class="form-control mb-2">
+
+                    <label>Data fim:</label>
+                    <input type="date" name="data_fim" class="form-control mb-2">
+
+                    <label>Fluxo:</label>
+                    <select name="fluxo" class="form-control mb-2">
+                        <option value="leve">Leve</option>
+                        <option value="moderado">Moderado</option>
+                        <option value="intenso">Intenso</option>
+                    </select>
+
+                    <label>Humor:</label>
+                    <input type="text" name="humor" class="form-control mb-2">
+
+                    <label>Remédios:</label>
+                    <input type="text" name="remedios" class="form-control mb-2">
+
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
             </div>
         </div>
+    </div>
+
+                  
+          
         <!-- Calendário Menstrual End -->
 
          <?php
@@ -170,7 +136,39 @@
 
         <!-- Template Javascript -->
         <script src="../js/logado.js"></script>
-        
+
+        <script>    
+        document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        locale: 'pt-br',
+        events: 'eventos.php',
+
+        eventClick: function(info) {
+            if (confirm("Deseja excluir este registro?")) {
+                $.ajax({
+                    url: 'excluir.php',
+                    type: 'POST',
+                    data: { id: info.event.id },
+                    success: function(response) {
+                        if (response.success) {
+                            alert("Registro excluído com sucesso!");
+                            info.event.remove(); // remove do calendário sem reload
+                        } else {
+                            alert("Erro ao excluir: " + response.error);
+                        }
+                    },
+                    error: function() {
+                        alert("Erro na comunicação com o servidor.");
+                    }
+                });
+            }
+        }
+    });
+    calendar.render();
+});
+
+     </script>
     
     </body>
 </html>

@@ -185,55 +185,6 @@
                         </div>
                     </div>
                     
-                    <!-- Comment Section -->
-                    <div class="comment-section wow fadeIn" data-wow-delay="0.6s">
-                        <h3 class="mb-4"><i class="fas fa-comments text-secondary me-2"></i>Compartilhe sua experiência</h3>
-                        <p>Como você monitora seu ciclo menstrual? Quais sintomas você costuma sentir em cada fase? Conte para a comunidade!</p>
-                        
-                        <!-- Existing Comments -->
-                        <div class="comment wow fadeIn" data-wow-delay="0.7s">
-                            <div class="d-flex">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User" class="user-avatar">
-                                <div>
-                                    <h5 class="mb-1">Ana Claudia</h5>
-                                    <p class="text-muted small mb-2">Postado em 15/06/2023</p>
-                                    <p>Uso um aplicativo para monitorar meu ciclo há 2 anos e foi a melhor decisão! Ajudou a identificar que minha TPM piora quando não durmo bem. No começo foi difícil lembrar de registrar, mas hoje faz parte da minha rotina.</p>
-                                    
-                                    <div class="comment-actions">
-                                        <span class="action-btn like-btn"><i class="fas fa-heart me-1"></i> Curtir (24)</span>
-                                        <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="comment wow fadeIn" data-wow-delay="0.8s">
-                            <div class="d-flex">
-                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" class="user-avatar">
-                                <div>
-                                    <h5 class="mb-1">Juliana Santos</h5>
-                                    <p class="text-muted small mb-2">Postado em 10/06/2023</p>
-                                    <p>Descobri que tenho SOP depois de notar que meus ciclos eram muito irregulares. Acompanhar os sintomas me ajudou a ter informações concretas para levar ao médico. Hoje meu tratamento está dando certo!</p>
-                                    
-                                    <div class="comment-actions">
-                                        <span class="action-btn like-btn"><i class="fas fa-heart me-1"></i> Curtir (15)</span>
-                                        <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Comment Form -->
-                        <div class="comment-form wow fadeIn" data-wow-delay="0.9s">
-                            <h5 class="mb-3">Deixe seu comentário</h5>
-                            <form id="add-comment">
-                                <div class="mb-3">
-                                    <textarea class="form-control" rows="4" placeholder="Compartilhe sua experiência com o ciclo menstrual..." required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Enviar comentário</button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
                 
                 <!-- Sidebar Column -->
@@ -318,44 +269,5 @@
  require("../include/modallogindeslogado.php");
    ?>
 
-
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const loginModal = new bootstrap.Modal(document.getElementById('loginRequiredModal'));
-    
-    function blockAllActions(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation();
-        loginModal.show();
-        return false;
-    }
-
-    const commentForm = document.getElementById('add-comment');
-    if (commentForm) {
-        const newForm = commentForm.cloneNode(true);
-        commentForm.parentNode.replaceChild(newForm, commentForm);
-        
-        newForm.addEventListener('submit', blockAllActions, true);
-        newForm.onsubmit = blockAllActions;
-        newForm.setAttribute('onsubmit', 'return false;');
-    }
-
-    document.querySelectorAll('.comment-section, .comment').forEach(section => {
-        section.addEventListener('click', function(e) {
-            if (!e.target.closest('a') && !e.target.closest('button')) {
-                blockAllActions(e);
-            }
-        }, true);
-    });
-
-    window.addEventListener('load', function() {
-        const spinner = document.getElementById('spinner');
-        if (spinner) {
-            spinner.style.display = 'none';
-        }
-    });
-});
-</script>
 </body>
 </html>

@@ -12,8 +12,6 @@
       require("../include/referenciashead.php");
       ?>
 
-        
-
     </head>
 
     <body>
@@ -50,7 +48,7 @@
                                 <i class="fas fa-envelope fa-2x text-primary me-4"></i>
                                 <div class="">
                                     <h4>E-mail</h4>
-                                    <p class="mb-2">bleedwithdignity@gmail.com</p>
+                                    <p class="mb-2">bleedwithdignity1@gmail.com</p>
                                 </div>
                             </div>
                         </div>
@@ -73,15 +71,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row g-5">
-                        <div class="col-lg-13 wow fadeIn" data-wow-delay="0.3s">
-                            <form action="">
-                                <input type="text" class="w-100 form-control py-3 mb-5 border-primary" placeholder="Nome">
-                                <input type="email" class="w-100 form-control py-3 mb-5 border-primary" placeholder="E-mail">
-                                <textarea class="w-100 form-control mb-5 border-primary" rows="8" cols="10" placeholder="Escreva sua mensagem"></textarea>
-                                <button class="w-100 btn btn-primary form-control py-3 border-primary text-white bg-primary" type="submit">Enviar</button>
-                            </form>
-                        </div>
+                    
                         
                     </div>
                 </div>

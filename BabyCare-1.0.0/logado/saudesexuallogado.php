@@ -129,72 +129,7 @@
                         </div>
                     </div>
                     
-                    <!-- Comment Section -->
-                    <div class="comment-section wow fadeIn" data-wow-delay="0.5s">
-                        <h3 class="mb-4"><i class="fas fa-comments text-secondary me-2"></i>Compartilhe sua opinião</h3>
-                        <p>Este espaço é para troca de experiências e informações sobre saúde sexual e reprodutiva. Respeite sempre a diversidade de vivências.</p>
-                        
-                        <!-- Existing Comments -->
-                        <div class="comment wow fadeIn" data-wow-delay="0.6s">
-                            <div class="d-flex">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User" class="user-avatar">
-                                <div>
-                                    <h5 class="mb-1">Ana Claudia</h5>
-                                    <p class="text-muted small mb-2">Postado em 15/06/2023</p>
-                                    <p>Na minha escola nunca tivemos educação sexual adequada. Aprendi tudo sozinha na internet, com muitos erros pelo caminho. É fundamental que as escolas abordem esse tema com seriedade e sem tabus.</p>
-                                    
-                                    <div class="comment-actions">
-                                        <span class="action-btn like-btn"><i class="fas fa-heart me-1"></i> Curtir (24)</span>
-                                        <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                    </div>
-                                    
-                                    <!-- Reply -->
-                                    <div class="comment mt-3 ms-4">
-                                        <div class="d-flex">
-                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="user-avatar" style="width: 40px; height: 40px;">
-                                            <div>
-                                                <h5 class="mb-1">Maria Eduarda</h5>
-                                                <p class="text-muted small mb-2">Postado em 16/06/2023</p>
-                                                <p>Concordo totalmente! Educação sexual nas escolas poderia prevenir tantos problemas. Eu mesma só fui aprender sobre métodos contraceptivos depois de uma gravidez não planejada.</p>
-                                                
-                                                <div class="comment-actions">
-                                                    <span class="action-btn like-btn active"><i class="fas fa-heart me-1"></i> Curtir (8)</span>
-                                                    <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="comment wow fadeIn" data-wow-delay="0.7s">
-                            <div class="d-flex">
-                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User" class="user-avatar">
-                                <div>
-                                    <h5 class="mb-1">Carlos Silva</h5>
-                                    <p class="text-muted small mb-2">Postado em 10/06/2023</p>
-                                    <p>Sou professor e vejo como os meninos também precisam de educação sexual. Muitos ainda têm ideias erradas sobre consentimento e prevenção. Precisamos quebrar esses mitos desde cedo.</p>
-                                    
-                                    <div class="comment-actions">
-                                        <span class="action-btn like-btn"><i class="fas fa-heart me-1"></i> Curtir (15)</span>
-                                        <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Comment Form -->
-                        <div class="comment-form wow fadeIn" data-wow-delay="0.8s">
-                            <h5 class="mb-3">Deixe seu comentário</h5>
-                            <form id="add-comment">
-                                <div class="mb-3">
-                                    <textarea class="form-control" rows="4" placeholder="Compartilhe sua experiência ou opinião sobre saúde sexual e reprodutiva..." required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Enviar comentário</button>
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
                 
                 <!-- Sidebar Column -->

@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Se não há erros, prosseguir com o cadastro
     if (empty($errors)) {
         // Verificar se email já existe
-        $check_sql = "SELECT id FROM users WHERE email = ?";
+        $check_sql = "SELECT user_id FROM users WHERE email = ?";
         $check_stmt = $mysqli->prepare($check_sql);
         $check_stmt->bind_param("s", $email);
         $check_stmt->execute();

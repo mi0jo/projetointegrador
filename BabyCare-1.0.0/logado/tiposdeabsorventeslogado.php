@@ -321,55 +321,7 @@
                         </div>
                     </div>
                     
-                    <!-- Comment Section -->
-                    <div class="comment-section wow fadeIn" data-wow-delay="0.7s">
-                        <h3 class="mb-4"><i class="fas fa-comments text-secondary me-2"></i>Compartilhe sua experiência</h3>
-                        <p>Qual tipo de absorvente você prefere? Tem alguma dica para quem está começando? Conte para a comunidade!</p>
-                        
-                        <!-- Existing Comments -->
-                        <div class="comment wow fadeIn" data-wow-delay="0.8s">
-                            <div class="d-flex">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User" class="user-avatar">
-                                <div>
-                                    <h5 class="mb-1">Ana Claudia</h5>
-                                    <p class="text-muted small mb-2">Postado em 15/06/2023</p>
-                                    <p>Uso coletor há 2 anos e foi revolucionário! No início foi estranho, mas depois de 3 ciclos me adaptei completamente. Economizei muito dinheiro e lixo. Dica: assistam tutoriais no YouTube para aprender a colocar.</p>
-                                    
-                                    <div class="comment-actions">
-                                        <span class="action-btn like-btn"><i class="fas fa-heart me-1"></i> Curtir (24)</span>
-                                        <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="comment wow fadeIn" data-wow-delay="0.9s">
-                            <div class="d-flex">
-                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" class="user-avatar">
-                                <div>
-                                    <h5 class="mb-1">Juliana Santos</h5>
-                                    <p class="text-muted small mb-2">Postado em 10/06/2023</p>
-                                    <p>Prefiro os absorventes de pano porque minha pele é muito sensível. Com os descartáveis tinha sempre irritação. Levo um saquinho impermeável na bolsa para guardar os usados quando estou fora de casa.</p>
-                                    
-                                    <div class="comment-actions">
-                                        <span class="action-btn like-btn"><i class="fas fa-heart me-1"></i> Curtir (15)</span>
-                                        <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Comment Form -->
-                        <div class="comment-form wow fadeIn" data-wow-delay="1s">
-                            <h5 class="mb-3">Deixe seu comentário</h5>
-                            <form id="add-comment">
-                                <div class="mb-3">
-                                    <textarea class="form-control" rows="4" placeholder="Compartilhe suas experiências com diferentes tipos de absorventes..." required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Enviar comentário</button>
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
                 
                 <!-- Sidebar Column -->

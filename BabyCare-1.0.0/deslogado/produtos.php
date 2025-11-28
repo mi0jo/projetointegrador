@@ -204,72 +204,7 @@
                         </div>
                     </div>
                     
-                    <!-- Comment Section -->
-                    <div class="comment-section wow fadeIn" data-wow-delay="0.6s">
-                        <h3 class="mb-4"><i class="fas fa-comments text-secondary me-2"></i>Compartilhe sua experiência</h3>
-                        <p>Este espaço é para trocar informações sobre produtos menstruais e acesso a eles. Conte qual produto você usa e por quê!</p>
-                        
-                        <!-- Existing Comments -->
-                        <div class="comment wow fadeIn" data-wow-delay="0.7s">
-                            <div class="d-flex">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User" class="user-avatar">
-                                <div>
-                                    <h5 class="mb-1">Ana Claudia</h5>
-                                    <p class="text-muted small mb-2">Postado em 15/06/2023</p>
-                                    <p>Migrei para o coletor menstrual há 2 anos e foi a melhor decisão! Além de econômico, é muito mais confortável. No começo foi difícil aprender a colocar, mas hoje não troco por nada.</p>
-                                    
-                                    <div class="comment-actions">
-                                        <span class="action-btn like-btn"><i class="fas fa-heart me-1"></i> Curtir (24)</span>
-                                        <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                    </div>
-                                    
-                                    <!-- Reply -->
-                                    <div class="comment mt-3 ms-4">
-                                        <div class="d-flex">
-                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="user-avatar" style="width: 40px; height: 40px;">
-                                            <div>
-                                                <h5 class="mb-1">Maria Eduarda</h5>
-                                                <p class="text-muted small mb-2">Postado em 16/06/2023</p>
-                                                <p>Também uso coletor! Uma dica para iniciantes: existem vários tamanhos, é importante escolher o adequado para seu fluxo e idade.</p>
-                                                
-                                                <div class="comment-actions">
-                                                    <span class="action-btn like-btn active"><i class="fas fa-heart me-1"></i> Curtir (8)</span>
-                                                    <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="comment wow fadeIn" data-wow-delay="0.8s">
-                            <div class="d-flex">
-                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" class="user-avatar">
-                                <div>
-                                    <h5 class="mb-1">Juliana Santos</h5>
-                                    <p class="text-muted small mb-2">Postado em 10/06/2023</p>
-                                    <p>Na minha comunidade temos um projeto de absorventes sustentáveis feitos com tecido doado. Ensinamos mulheres a costurar seus próprios absorventes reutilizáveis. Quem quiser saber mais pode me contactar!</p>
-                                    
-                                    <div class="comment-actions">
-                                        <span class="action-btn like-btn"><i class="fas fa-heart me-1"></i> Curtir (15)</span>
-                                        <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Comment Form -->
-                        <div class="comment-form wow fadeIn" data-wow-delay="0.9s">
-                            <h5 class="mb-3">Deixe seu comentário</h5>
-                            <form id="add-comment">
-                                <div class="mb-3">
-                                    <textarea class="form-control" rows="4" placeholder="Compartilhe sua experiência com produtos menstruais..." required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Enviar comentário</button>
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
                 
                 <!-- Sidebar Column -->
@@ -356,43 +291,6 @@
   require("../include/modallogindeslogado.php");
    ?>
 
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const loginModal = new bootstrap.Modal(document.getElementById('loginRequiredModal'));
     
-    function blockAllActions(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation();
-        loginModal.show();
-        return false;
-    }
-
-    const commentForm = document.getElementById('add-comment');
-    if (commentForm) {
-        const newForm = commentForm.cloneNode(true);
-        commentForm.parentNode.replaceChild(newForm, commentForm);
-        
-        newForm.addEventListener('submit', blockAllActions, true);
-        newForm.onsubmit = blockAllActions;
-        newForm.setAttribute('onsubmit', 'return false;');
-    }
-
-    document.querySelectorAll('.comment-section, .comment').forEach(section => {
-        section.addEventListener('click', function(e) {
-            if (!e.target.closest('a') && !e.target.closest('button')) {
-                blockAllActions(e);
-            }
-        }, true);
-    });
-
-    window.addEventListener('load', function() {
-        const spinner = document.getElementById('spinner');
-        if (spinner) {
-            spinner.style.display = 'none';
-        }
-    });
-});
-</script>
 </body>
 </html>

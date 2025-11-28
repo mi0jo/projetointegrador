@@ -66,7 +66,41 @@ CREATE TABLE curtidas_materias (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (materia_id) REFERENCES materia(id)
 );
+-- Certifique-se de que está usando o banco correto
+USE bleedwithdignity_db;
+
+-- Criação da tabela comentarios_site
+CREATE TABLE IF NOT EXISTS comentarios_site (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario_id INT NOT NULL,
+    nome_usuario VARCHAR(255) NOT NULL,
+    pagina VARCHAR(100) NOT NULL,
+    comentario TEXT NOT NULL,
+    data_publicacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    curtidas INT DEFAULT 0,
+    status ENUM('ativo', 'removido') DEFAULT 'ativo',
+    FOREIGN KEY (usuario_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Criação da tabela de curtidas
+CREATE TABLE IF NOT EXISTS curtidas_comentarios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario_id INT NOT NULL,
+    comentario_id INT NOT NULL,
+    data_curtida DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (comentario_id) REFERENCES comentarios_site(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_curtida (usuario_id, comentario_id)
+);
+
+
+ALTER TABLE users ADD COLUMN IF NOT EXISTS foto_perfil VARCHAR(255) NULL;
+
+CREATE INDEX IF NOT EXISTS idx_comentarios_pagina ON comentarios_site(pagina);
+CREATE INDEX IF NOT EXISTS idx_comentarios_usuario ON comentarios_site(usuario_id);
+CREATE INDEX IF NOT EXISTS idx_comentarios_data ON comentarios_site(data_publicacao);
 
 -- Inserção do usuário admin com senha visível (exemplo: 'admin123')
 INSERT INTO users (nome, email, email_confirmado, senha, tipo) VALUES
 ('Administrador Geral', 'admin@sistema.com', TRUE, 'adm123', 'admin');
+

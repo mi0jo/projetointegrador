@@ -258,71 +258,7 @@
                         </div>
                     </div>
                     
-                    <!-- Comment Section -->
-                    <div class="comment-section wow fadeIn" data-wow-delay="0.8s">
-                        <h3 class="mb-4"><i class="fas fa-comments text-secondary me-2"></i>Compartilhe sua experiência</h3>
-                        <p>Quais cuidados você toma durante seu período menstrual? Tem alguma dica especial? Conte para a comunidade!</p>
-                        
-                        <!-- Existing Comments -->
-                        <div class="comment wow fadeIn" data-wow-delay="0.9s">
-                            <div class="d-flex">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User" class="user-avatar">
-                                <div>
-                                    <h5 class="mb-1">Ana Claudia</h5>
-                                    <p class="text-muted small mb-2">Postado em 15/06/2023</p>
-                                    <p>Descobri que usar sabonete íntimo específico fez toda diferença para minha saúde vaginal durante a menstruação. Antes tinha muita irritação, agora não tenho mais problemas.</p>
-                                    
-                                    <div class="comment-actions">
-                                        <span class="action-btn like-btn"><i class="fas fa-heart me-1"></i> Curtir (24)</span>
-                                        <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="comment wow fadeIn" data-wow-delay="1s">
-                            <div class="d-flex">
-                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" class="user-avatar">
-                                <div>
-                                    <h5 class="mb-1">Juliana Santos</h5>
-                                    <p class="text-muted small mb-2">Postado em 10/06/2023</p>
-                                    <p>Uso compressa de água morna nas cólicas e chá de gengibre. Ajuda muito! Também passei a usar calcinhas absorventes à noite, muito mais confortável que absorventes tradicionais.</p>
-                                    
-                                    <div class="comment-actions">
-                                        <span class="action-btn like-btn"><i class="fas fa-heart me-1"></i> Curtir (15)</span>
-                                        <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="comment wow fadeIn" data-wow-delay="1.1s">
-                            <div class="d-flex">
-                                <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="User" class="user-avatar">
-                                <div>
-                                    <h5 class="mb-1">Camila Rodrigues</h5>
-                                    <p class="text-muted small mb-2">Postado em 05/07/2023</p>
-                                    <p>Depois que comecei a usar coletor menstrual minha vida mudou! Além de ser mais econômico e ecológico, percebi que tenho menos irritações. No início foi difícil me adaptar, mas valeu a pena.</p>
-                                    
-                                    <div class="comment-actions">
-                                        <span class="action-btn like-btn"><i class="fas fa-heart me-1"></i> Curtir (32)</span>
-                                        <span class="action-btn reply-btn"><i class="fas fa-reply me-1"></i> Responder</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Comment Form -->
-                        <div class="comment-form wow fadeIn" data-wow-delay="1.2s">
-                            <h5 class="mb-3">Deixe seu comentário</h5>
-                            <form id="add-comment">
-                                <div class="mb-3">
-                                    <textarea class="form-control" rows="4" placeholder="Compartilhe seus cuidados de higiene menstrual..." required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Enviar comentário</button>
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
                 
                 <!-- Sidebar Column -->
