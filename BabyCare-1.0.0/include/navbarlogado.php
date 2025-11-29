@@ -33,8 +33,8 @@
                                 <a href="../logado/pobrezalogado.php" class="dropdown-item">Pobreza Menstrual</a>
                             </div>
                         </div>
-                        <a href="../logado/calendariologado.php" class="nav-item nav-link mx-2">Calendário Menstrual</a>
-                        <a href="../ajax/forumlogado.php" class="nav-item nav-link">Fórum</a>
+                        <a href="../calendario/calendariologado.php" class="nav-item nav-link mx-2">Calendário Menstrual</a>
+                        <a href="../forum/forumlogado.php" class="nav-item nav-link">Fórum</a>
                         <a href="../logado/contatologado.php" class="nav-item nav-link mx-2 ">Contato</a>
                                 </div>
                        <div class="d-flex me-4">

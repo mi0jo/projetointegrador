@@ -14,8 +14,8 @@ if (isset($_POST['login'])) {
 
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
-
-        if ($senha === $user['senha']) {
+        
+    if (password_verify($senha, $user['senha'])) {
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['nome']    = $user['nome'];
             $_SESSION['tipo']    = $user['tipo'];

@@ -122,48 +122,7 @@
                         </div>
                     </div>
                     
-                    <!-- Why It Matters -->
-                    <div class="content-section wow fadeIn" data-wow-delay="0.4s">
-                        <h2 class="mb-4">Impacto da Falta de Acesso</h2>
-                        <p>A pobreza menstrual afeta profundamente a vida de milhões de pessoas:</p>
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="fact-card wow fadeIn" data-wow-delay="0.4s">
-                                    <h5><i class="fas fa-graduation-cap text-danger me-2"></i> Educação</h5>
-                                    <p>Meninas perdem até 45 dias de aula por ano por não terem absorventes, segundo a UNICEF.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="fact-card wow fadeIn" data-wow-delay="0.5s">
-                                    <h5><i class="fas fa-briefcase text-danger me-2"></i> Trabalho</h5>
-                                    <p>Mulheres em situação de pobreza menstrual faltam ao trabalho ou usam materiais inadequados que podem vazar.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="fact-card wow fadeIn" data-wow-delay="0.6s">
-                                    <h5><i class="fas fa-heartbeat text-danger me-2"></i> Saúde</h5>
-                                    <p>Uso de materiais inapropriados como jornal ou miolo de pão pode causar infecções graves.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="fact-card wow fadeIn" data-wow-delay="0.7s">
-                                    <h5><i class="fas fa-brain text-danger me-2"></i> Autoestima</h5>
-                                    <p>A impossibilidade de gerenciar adequadamente a menstruação afeta a autoconfiança e saúde mental.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="highlight-box mt-4">
-                            <h5><i class="fas fa-chart-line text-primary me-2"></i> Dados sobre Pobreza Menstrual no Brasil</h5>
-                            <ul>
-                                <li>28% das mulheres brasileiras já deixaram de ir à escola ou ao trabalho por não terem absorventes</li>
-                                <li>22% das adolescentes entre 15-17 anos não têm acesso a produtos menstruais adequados</li>
-                                <li>Uma pessoa gasta em média R$ 300 por ano com absorventes descartáveis</li>
-                                <li>4 milhões de estudantes não têm acesso a produtos menstruais nas escolas brasileiras</li>
-                            </ul>
-                        </div>
-                    </div>
+                   
                     
                     <!-- How to Access -->
                     <div class="content-section wow fadeIn" data-wow-delay="0.5s">

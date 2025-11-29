@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
                     $mysqli->query("ALTER TABLE users ADD COLUMN foto_perfil VARCHAR(255) NULL");
                 }
                 
-                $updateSql = "UPDATE users SET foto_perfil = ? WHERE id = ?";
+                $updateSql = "UPDATE users SET foto_perfil = ? WHERE user_id = ?";
                 $updateStmt = $mysqli->prepare($updateSql);
                 $updateStmt->bind_param("si", $foto_path, $_SESSION['user_id']);
                 
@@ -128,14 +128,6 @@ $result_posts = $stmt_posts->get_result();
 $total_posts = $result_posts->fetch_assoc()['total'] ?? 0;
 $stmt_posts->close();
 
-// Total de curtidas nas matérias
-$sql_curtidas = "SELECT COUNT(*) as total FROM curtidas_materias WHERE user_id = ?";
-$stmt_curtidas = $mysqli->prepare($sql_curtidas);
-$stmt_curtidas->bind_param("i", $user_id);
-$stmt_curtidas->execute();
-$result_curtidas = $stmt_curtidas->get_result();
-$total_curtidas = $result_curtidas->fetch_assoc()['total'] ?? 0;
-$stmt_curtidas->close();
 
 
 $mysqli->close();
@@ -357,11 +349,15 @@ $mysqli->close();
                                         <small class="text-muted">Seus dados pessoais nunca serão compartilhados</small>
                                     </div>
                                     
-                                    <div class="alert alert-warning">
-                                        <h6><i class="fas fa-exclamation-triangle me-2"></i>Excluir conta</h6>
-                                        <p class="mb-2">Ao excluir sua conta, todos os seus dados serão permanentemente removidos.</p>
-                                        <button class="btn btn-sm btn-outline-danger">Excluir minha conta</button>
-                                    </div>
+                                   <div class="alert alert-warning">
+    <h6><i class="fas fa-exclamation-triangle me-2"></i>Excluir conta</h6>
+    <p class="mb-2">Ao excluir sua conta, todos os seus dados serão permanentemente removidos.</p>
+    
+    <form action="excluir_conta.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir sua conta?')">
+        <button type="submit" class="btn btn-sm btn-outline-danger">Excluir minha conta</button>
+    </form>
+</div>
+
                                 </div>
                             </div>
                         </div>

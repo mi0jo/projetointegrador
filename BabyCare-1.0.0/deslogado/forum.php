@@ -26,9 +26,6 @@
        require("../include/modalsearch.php");
 
    ?>
-
-
-
         
         <!-- Page Header Start -->
         <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
@@ -55,9 +52,7 @@
                                 <div class="mb-3">
                                     <textarea class="form-control" id="post-content" rows="3" placeholder="O que você gostaria de compartilhar?" required></textarea>
                                 </div>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" id="post-tags" placeholder="Tags (separadas por vírgula)">
-                                </div>
+                                
                                 <button type="submit" class="btn btn-primary">Publicar</button>
                             </form>
                         </div>
@@ -75,212 +70,12 @@
                                 </ul>
                             </div>
                             <div>
-                                <input type="text" class="form-control" placeholder="Buscar no fórum...">
                             </div>
                         </div>
 
-                        <!-- Posts List -->
-                        <div id="posts-container">
-                            <!-- Post 1 -->
-                            <div class="forum-post bg-white p-4 wow fadeIn" data-wow-delay="0.3s">
-                                <div class="d-flex mb-3">
-                                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User" class="user-avatar me-3">
-                                    <div>
-                                        <h5 class="mb-1">Dúvida sobre absorventes reutilizáveis</h5>
-                                        <p class="text-muted small mb-0">Postado por <strong>Ana Silva</strong> em 15/06/2023</p>
-                                    </div>
-                                </div>
-                                <p class="mb-3">Olá pessoal, estou pensando em migrar para absorventes reutilizáveis para reduzir meu impacto ambiental, mas tenho algumas dúvidas sobre higienização e durabilidade. Alguém aqui já usa e pode compartilhar experiências?</p>
+                       
                                 
-                                <div class="mb-3">
-                                    <span class="tag">sustentabilidade</span>
-                                    <span class="tag">absorventes</span>
-                                    <span class="tag">dúvidas</span>
-                                </div>
-                                
-                                <div class="post-actions d-flex">
-                                    <div class="action-btn like-btn active">
-                                        <i class="fas fa-heart me-1"></i> <span>24</span>
-                                    </div>
-                                    <div class="action-btn comment-btn">
-                                        <i class="fas fa-comment me-1"></i> <span>8</span>
-                                    </div>
-                                    <div class="action-btn save-btn active ms-auto">
-                                        <i class="fas fa-bookmark me-1"></i> Salvar
-                                    </div>
-                                </div>
-                                
-                                <!-- Comments Section -->
-                                <div class="comments-section">
-                                    <div class="comment">
-                                        <div class="d-flex">
-                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="user-avatar me-3" style="width: 40px; height: 40px;">
-                                            <div>
-                                                <strong>Maria Oliveira</strong>
-                                                <p class="small text-muted mb-1">16/06/2023</p>
-                                                <p>Uso há 6 meses e amo! No começo é estranho, mas você se acostuma. Lavo na máquina com água fria e sabão neutro. Dura cerca de 2 anos se cuidar bem.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="comment">
-                                        <div class="d-flex">
-                                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" class="user-avatar me-3" style="width: 40px; height: 40px;">
-                                            <div>
-                                                <strong>Carla Santos</strong>
-                                                <p class="small text-muted mb-1">15/06/2023</p>
-                                                <p>Recomendo começar com um kit pequeno para testar antes de investir em vários. Eu tenho 5 e já é suficiente para meu fluxo moderado.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mt-3">
-                                        <form class="comment-form">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Adicione um comentário...">
-                                                <button class="btn btn-primary" type="submit">Enviar</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Post 2 -->
-                            <div class="forum-post bg-white p-4 wow fadeIn" data-wow-delay="0.4s">
-                                <div class="d-flex mb-3">
-                                    <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="User" class="user-avatar me-3">
-                                    <div>
-                                        <h5 class="mb-1">Como lidar com cólicas intensas?</h5>
-                                        <p class="text-muted small mb-0">Postado por <strong>Juliana Costa</strong> em 12/06/2023</p>
-                                    </div>
-                                </div>
-                                <p class="mb-3">Gostaria de compartilhar que sofro com cólicas muito fortes que me impedem de trabalhar nos primeiros dias da menstruação. Já tentei vários remédios e chás, mas nada parece ajudar muito. Alguém tem alguma dica ou passou por algo parecido?</p>
-                                
-                                <div class="mb-3">
-                                    <span class="tag">cólicas</span>
-                                    <span class="tag">saúde</span>
-                                    <span class="tag">dicas</span>
-                                </div>
-                                
-                                <div class="post-actions d-flex">
-                                    <div class="action-btn like-btn">
-                                        <i class="fas fa-heart me-1"></i> <span>15</span>
-                                    </div>
-                                    <div class="action-btn comment-btn">
-                                        <i class="fas fa-comment me-1"></i> <span>5</span>
-                                    </div>
-                                    <div class="action-btn save-btn ms-auto">
-                                        <i class="fas fa-bookmark me-1"></i> Salvar
-                                    </div>
-                                </div>
-                                
-                                <!-- Comments Section (hidden by default) -->
-                                <div class="comments-section">
-                                    <div class="comment">
-                                        <div class="d-flex">
-                                            <img src="https://randomuser.me/api/portraits/women/50.jpg" alt="User" class="user-avatar me-3" style="width: 40px; height: 40px;">
-                                            <div>
-                                                <strong>Fernanda Lima</strong>
-                                                <p class="small text-muted mb-1">13/06/2023</p>
-                                                <p>Juliana, já considerou a possibilidade de endometriose? Eu tinha cólicas horríveis e descobri que era isso. Depois do diagnóstico e tratamento, melhorou muito.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mt-3">
-                                        <form class="comment-form">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Adicione um comentário...">
-                                                <button class="btn btn-primary" type="submit">Enviar</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Post 3 -->
-                            <div class="forum-post bg-white p-4 wow fadeIn" data-wow-delay="0.5s">
-                                <div class="d-flex mb-3">
-                                    <img src="https://randomuser.me/api/portraits/women/75.jpg" alt="User" class="user-avatar me-3">
-                                    <div>
-                                        <h5 class="mb-1">Relato: Primeira menstruação da minha filha</h5>
-                                        <p class="text-muted small mb-0">Postado por <strong>Patrícia Almeida</strong> em 10/06/2023</p>
-                                    </div>
-                                </div>
-                                <p class="mb-3">Queria compartilhar essa experiência linda que tivemos em casa. Minha filha de 11 anos menstruou pela primeira vez e, graças às conversas abertas que sempre tivemos, ela não teve medo, apenas veio me contar como se fosse a coisa mais natural do mundo (e é!). Preparamos um kit menstrual juntas e celebramos essa nova fase. Como foi a experiência de vocês?</p>
-                                
-                                <div class="mb-3">
-                                    <span class="tag">primeira-menstruação</span>
-                                    <span class="tag">educação</span>
-                                    <span class="tag">relatos</span>
-                                </div>
-                                
-                                <div class="post-actions d-flex">
-                                    <div class="action-btn like-btn">
-                                        <i class="fas fa-heart me-1"></i> <span>32</span>
-                                    </div>
-                                    <div class="action-btn comment-btn">
-                                        <i class="fas fa-comment me-1"></i> <span>12</span>
-                                    </div>
-                                    <div class="action-btn save-btn active ms-auto">
-                                        <i class="fas fa-bookmark me-1"></i> Salvar
-                                    </div>
-                                </div>
-                                
-                                <!-- Comments Section (hidden by default) -->
-                                <div class="comments-section">
-                                    <div class="comment">
-                                        <div class="d-flex">
-                                            <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="User" class="user-avatar me-3" style="width: 40px; height: 40px;">
-                                            <div>
-                                                <strong>Roberta Gonçalves</strong>
-                                                <p class="small text-muted mb-1">11/06/2023</p>
-                                                <p>Que lindo, Patrícia! Parabéns pelo trabalho de educação com sua filha. Infelizmente na minha época foi muito diferente, foi um susto e ninguém me explicou direito o que estava acontecendo.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="comment">
-                                        <div class="d-flex">
-                                            <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="User" class="user-avatar me-3" style="width: 40px; height: 40px;">
-                                            <div>
-                                                <strong>Amanda Rocha</strong>
-                                                <p class="small text-muted mb-1">10/06/2023</p>
-                                                <p>Adorei sua abordagem! Estou grávida de uma menina e já estou pensando em como vou lidar com isso no futuro. Vou guardar sua experiência como inspiração!</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mt-3">
-                                        <form class="comment-form">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Adicione um comentário...">
-                                                <button class="btn btn-primary" type="submit">Enviar</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Pagination -->
-                        <nav aria-label="Page navigation" class="mt-5 wow fadeIn" data-wow-delay="0.6s">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Próxima</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
+                               
         <!-- Forum End -->
 
         <!-- Saved Posts Button -->

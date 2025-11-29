@@ -75,9 +75,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nome_completo = $nome . ' ' . $sobrenome;
             
             // Inserir usuário no banco
+            $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
             $insert_sql = "INSERT INTO users (nome, email, Data_Nascimento, senha, tipo) VALUES (?, ?, ?, ?, 'user')";
             $insert_stmt = $mysqli->prepare($insert_sql);
-            $insert_stmt->bind_param("ssss", $nome_completo, $email, $nascimento, $senha);
+            $insert_stmt->bind_param("ssss", $nome_completo, $email, $nascimento, $senha_hash);
             
             if ($insert_stmt->execute()) {
                 // Limpar dados do formulário da sessão

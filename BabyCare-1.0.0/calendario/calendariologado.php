@@ -153,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     success: function(response) {
                         if (response.success) {
                             alert("Registro excluído com sucesso!");
-                            info.event.remove(); // remove do calendário sem reload
+                            info.event.remove(); 
                         } else {
                             alert("Erro ao excluir: " + response.error);
                         }

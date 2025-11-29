@@ -23,7 +23,6 @@ while ($row = $result->fetch_assoc()) {
     'user_id'    => $row['user_id'],
     'title' => "Humor: ".$row['humor']." | Remédios: ".$row['remedios'],
     'start' => $row['data_inicio'],
-    // só adiciona 'end' se realmente tiver data_fim
     'end' => !empty($row['data_fim']) 
     ? $row['data_fim'] . 'T23:59:59' 
     : null,

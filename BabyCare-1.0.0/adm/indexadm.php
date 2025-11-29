@@ -2,7 +2,7 @@
 session_start();
 
 // Verificar se o usuário é admin
-if (!isset($_SESSION['id']) || $_SESSION['tipo'] !== 'admin') {
+if (!isset($_SESSION['user_id']) || $_SESSION['tipo'] !== 'admin') {
     header('Location: ../deslogado/login.php');
     exit();
 }
@@ -10,8 +10,8 @@ if (!isset($_SESSION['id']) || $_SESSION['tipo'] !== 'admin') {
 include("../include/conexao.php");
 
 // Buscar dados do admin
-$user_id = $_SESSION['id'];
-$sql = "SELECT * FROM users WHERE id = ?";
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT * FROM users WHERE user_id = ?";
 $stmt = $mysqli->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -35,10 +35,7 @@ $sql_posts = "SELECT COUNT(*) as total FROM forum_posts";
 $result_posts = $mysqli->query($sql_posts);
 $total_posts = $result_posts->fetch_assoc()['total'];
 
-// Total de matérias
-$sql_materias = "SELECT COUNT(*) as total FROM materia";
-$result_materias = $mysqli->query($sql_materias);
-$total_materias = $result_materias->fetch_assoc()['total'];
+
 
 // Posts pendentes (não temos coluna 'moderado', então vamos contar todos)
 $sql_pending = "SELECT COUNT(*) as total FROM forum_posts";
@@ -46,48 +43,29 @@ $result_pending = $mysqli->query($sql_pending);
 $pending_posts_count = $result_pending->fetch_assoc()['total'];
 
 // Buscar usuários recentes
-$sql_recent_users = "SELECT id, nome, email, Data_Nascimento, tipo FROM users ORDER BY id DESC LIMIT 10";
+$sql_recent_users = "SELECT user_id, nome, email, Data_Nascimento, tipo FROM users ORDER BY user_id DESC LIMIT 10";
 $result_recent_users = $mysqli->query($sql_recent_users);
 $recent_users = [];
 while ($row = $result_recent_users->fetch_assoc()) {
     $recent_users[] = $row;
 }
 
-// Buscar posts recentes para moderação
-$sql_recent_posts = "SELECT fp.id, fp.titulo, fp.data_postagem, u.nome as autor 
-                      FROM forum_posts fp 
-                      JOIN users u ON fp.autor_id = u.id 
-                      ORDER BY fp.data_postagem DESC 
-                      LIMIT 10";
-$result_recent_posts = $mysqli->query($sql_recent_posts);
-$recent_posts = [];
-while ($row = $result_recent_posts->fetch_assoc()) {
-    $recent_posts[] = $row;
-}
+
 
 // Buscar todos os usuários para gerenciamento
-$sql_all_users = "SELECT id, nome, email, Data_Nascimento, tipo FROM users ORDER BY id DESC";
+$sql_all_users = "SELECT user_id, nome, email, Data_Nascimento, tipo FROM users ORDER BY user_id DESC";
 $result_all_users = $mysqli->query($sql_all_users);
 $all_users = [];
 while ($row = $result_all_users->fetch_assoc()) {
     $all_users[] = $row;
 }
 
-// Buscar matérias para gerenciamento
-$sql_all_materias = "SELECT m.id, m.titulo, m.topico, m.data, u.nome as autor 
-                     FROM materia m 
-                     JOIN users u ON m.autor_id = u.id 
-                     ORDER BY m.data DESC";
-$result_all_materias = $mysqli->query($sql_all_materias);
-$all_materias = [];
-while ($row = $result_all_materias->fetch_assoc()) {
-    $all_materias[] = $row;
-}
+
 
 // Buscar posts do fórum para moderação
 $sql_forum_posts = "SELECT fp.id, fp.titulo, fp.conteudo, fp.data_postagem, u.nome as autor 
                     FROM forum_posts fp 
-                    JOIN users u ON fp.autor_id = u.id 
+                    JOIN users u ON fp.autor_id = u.user_id 
                     ORDER BY fp.data_postagem DESC 
                     LIMIT 10";
 $result_forum_posts = $mysqli->query($sql_forum_posts);
@@ -141,12 +119,10 @@ $mysqli->close();
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav d-flex flex-row mx-auto align-items-center">
-                        <a href="indexadm.php" class="nav-item nav-link mx-2">Painel Admin</a>
                         <div class="nav-item dropdown mx-2">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Gerenciar</a>
                             <div class="dropdown-menu m-0 bg-secondary rounded-0">
                                 <a href="#usuarios" class="dropdown-item">Usuários</a>
-                                <a href="#conteudo" class="dropdown-item">Conteúdo</a>
                                 <a href="#forum" class="dropdown-item">Fórum</a>
                             </div>
                         </div>
@@ -196,9 +172,7 @@ $mysqli->close();
                                 <li class="nav-item mb-2">
                                     <a class="nav-link" href="#usuarios"><i class="fas fa-users me-2"></i> Usuários</a>
                                 </li>
-                                <li class="nav-item mb-2">
-                                    <a class="nav-link" href="#conteudo"><i class="fas fa-file-alt me-2"></i> Conteúdo</a>
-                                </li>
+                                
                                 <li class="nav-item mb-2">
                                     <a class="nav-link" href="#forum"><i class="fas fa-comments me-2"></i> Moderar Fórum</a>
                                 </li>
@@ -244,13 +218,7 @@ $mysqli->close();
                                     <div class="small text-warning"><i class="fas fa-comments me-1"></i> Discussões</div>
                                 </div>
                             </div>
-                            <div class="col-md-3 mb-4">
-                                <div class="admin-stats">
-                                    <div class="stats-number"><?php echo $total_materias; ?></div>
-                                    <div class="stats-label">Matérias</div>
-                                    <div class="small text-primary"><i class="fas fa-file-alt me-1"></i> Conteúdo</div>
-                                </div>
-                            </div>
+                            
                         </div>
 
                         <!-- Recent Users -->
@@ -273,7 +241,7 @@ $mysqli->close();
                                         <tbody>
                                             <?php foreach($recent_users as $user): ?>
                                             <tr>
-                                                <td><?php echo $user['id']; ?></td>
+                                                <td><?php echo $user['user_id']; ?></td>
                                                 <td><?php echo htmlspecialchars($user['nome']); ?></td>
                                                 <td><?php echo htmlspecialchars($user['email']); ?></td>
                                                 <td><?php echo !empty($user['Data_Nascimento']) ? date('d/m/Y', strtotime($user['Data_Nascimento'])) : 'Não informada'; ?></td>
@@ -290,34 +258,7 @@ $mysqli->close();
                             </div>
                         </div>
 
-                        <!-- Recent Posts -->
-                        <div class="profile-card wow fadeIn admin-card mb-4" data-wow-delay="0.4s">
-                            <div class="profile-card-header">
-                                <h5 class="mb-0"><i class="fas fa-comments me-2"></i>Posts Recentes no Fórum</h5>
-                            </div>
-                            <div class="profile-card-body">
-                                <div class="table-responsive">
-                                    <table class="table admin-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Título</th>
-                                                <th>Autor</th>
-                                                <th>Data</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach($recent_posts as $post): ?>
-                                            <tr>
-                                                <td><?php echo htmlspecialchars($post['titulo']); ?></td>
-                                                <td><?php echo htmlspecialchars($post['autor']); ?></td>
-                                                <td><?php echo date('d/m/Y H:i', strtotime($post['data_postagem'])); ?></td>
-                                            </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <!-- Quick Actions -->
                         <div class="profile-card wow fadeIn admin-card" data-wow-delay="0.5s">
@@ -331,11 +272,7 @@ $mysqli->close();
                                             <i class="fas fa-user-plus me-2"></i>Gerenciar Usuários
                                         </a>
                                     </div>
-                                    <div class="col-md-4 mb-3">
-                                        <a href="#conteudo" class="btn btn-success w-100">
-                                            <i class="fas fa-file-upload me-2"></i>Gerenciar Conteúdo
-                                        </a>
-                                    </div>
+                                    
                                     <div class="col-md-4 mb-3">
                                         <a href="#forum" class="btn btn-warning w-100">
                                             <i class="fas fa-comments me-2"></i>Moderar Fórum
@@ -370,7 +307,7 @@ $mysqli->close();
                                         <tbody>
                                             <?php foreach($all_users as $user): ?>
                                             <tr>
-                                                <td><?php echo $user['id']; ?></td>
+                                                <td><?php echo $user['user_id']; ?></td>
                                                 <td><?php echo htmlspecialchars($user['nome']); ?></td>
                                                 <td><?php echo htmlspecialchars($user['email']); ?></td>
                                                 <td><?php echo !empty($user['Data_Nascimento']) ? date('d/m/Y', strtotime($user['Data_Nascimento'])) : 'Não informada'; ?></td>
@@ -380,14 +317,12 @@ $mysqli->close();
                                                     </span>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-sm btn-primary" onclick="viewUser(<?php echo $user['id']; ?>)">
+                                                    <button class="btn btn-sm btn-primary" onclick="viewUser(<?php echo $user['user_id']; ?>)">
                                                         <i class="fas fa-eye"></i>
                                                     </button>
-                                                    <button class="btn btn-sm btn-warning" onclick="editUser(<?php echo $user['id']; ?>)">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button>
-                                                    <?php if($user['id'] != $_SESSION['id']): ?>
-                                                    <button class="btn btn-sm btn-danger" onclick="deleteUser(<?php echo $user['id']; ?>)">
+                                                   
+                                                    <?php if($user['user_id'] != $_SESSION['user_id']): ?>
+                                                    <button class="btn btn-sm btn-danger" onclick="deleteUser(<?php echo $user['user_id']; ?>)">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                     <?php endif; ?>
@@ -401,63 +336,7 @@ $mysqli->close();
                         </div>
                     </section>
 
-                    <!-- Content Section -->
-                    <section id="conteudo" class="content-section" style="display:none;">
-                        <h2 class="mb-4 wow fadeIn" data-wow-delay="0.1s"><i class="fas fa-file-alt me-2"></i>Gerenciar Conteúdo</h2>
-                        
-                        <!-- Botão para Nova Matéria -->
-                        <div class="row mb-4">
-                            <div class="col-md-12 text-end">
-                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#novaMateriaModal">
-                                    <i class="fas fa-plus me-2"></i>Nova Matéria
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="profile-card wow fadeIn admin-card">
-                            <div class="profile-card-header">
-                                <h5 class="mb-0"><i class="fas fa-list me-2"></i>Matérias Publicadas</h5>
-                            </div>
-                            <div class="profile-card-body">
-                                <div class="table-responsive">
-                                    <table class="table admin-table">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Título</th>
-                                                <th>Tópico</th>
-                                                <th>Autor</th>
-                                                <th>Data</th>
-                                                <th>Ações</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach($all_materias as $materia): ?>
-                                            <tr>
-                                                <td><?php echo $materia['id']; ?></td>
-                                                <td><?php echo htmlspecialchars($materia['titulo']); ?></td>
-                                                <td><?php echo htmlspecialchars($materia['topico']); ?></td>
-                                                <td><?php echo htmlspecialchars($materia['autor']); ?></td>
-                                                <td><?php echo date('d/m/Y H:i', strtotime($materia['data'])); ?></td>
-                                                <td>
-                                                    <button class="btn btn-sm btn-primary" onclick="viewMateria(<?php echo $materia['id']; ?>)">
-                                                        <i class="fas fa-eye"></i>
-                                                    </button>
-                                                    <button class="btn btn-sm btn-warning" onclick="editMateria(<?php echo $materia['id']; ?>)">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button>
-                                                    <button class="btn btn-sm btn-danger" onclick="deleteMateria(<?php echo $materia['id']; ?>)">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    
                     <!-- Forum Section -->
                     <section id="forum" class="content-section" style="display:none;">
                         <h2 class="mb-4 wow fadeIn" data-wow-delay="0.1s"><i class="fas fa-comments me-2"></i>Moderar Fórum</h2>
@@ -545,95 +424,10 @@ $mysqli->close();
         </div>
     </div>
     <!-- Admin Content End -->
-    <!-- Modal para Nova Matéria -->
-    <div class="modal fade" id="novaMateriaModal" tabindex="-1" aria-labelledby="novaMateriaModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="novaMateriaModalLabel">
-                        <i class="fas fa-plus me-2"></i>Nova Matéria
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form id="formNovaMateria" method="POST" action="admin_actions.php">
-                    <div class="modal-body">
-                        <!-- Mensagens de sucesso/erro -->
-                        <?php if (isset($_SESSION['materia_success'])): ?>
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <?php echo $_SESSION['materia_success']; ?>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            <?php unset($_SESSION['materia_success']); ?>
-                        <?php endif; ?>
 
-                        <?php if (isset($_SESSION['materia_error'])): ?>
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <?php echo $_SESSION['materia_error']; ?>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            <?php unset($_SESSION['materia_error']); ?>
-                        <?php endif; ?>
 
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label for="titulo" class="form-label">Título da Matéria *</label>
-                                <input type="text" class="form-control" id="titulo" name="titulo" required 
-                                       placeholder="Digite o título da matéria">
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="topico" class="form-label">Tópico *</label>
-                                <select class="form-select" id="topico" name="topico" required>
-                                    <option value="">Selecione um tópico</option>
-                                    <option value="Dignidade Menstrual">Dignidade Menstrual</option>
-                                    <option value="Saúde Sexual">Saúde Sexual e Reprodutiva</option>
-                                    <option value="Produtos Menstruais">Produtos Menstruais</option>
-                                    <option value="Tipos de Absorventes">Tipos de Absorventes</option>
-                                    <option value="Ciclo Menstrual">Ciclo Menstrual</option>
-                                    <option value="Saúde e Higiene">Saúde e Higiene Menstrual</option>
-                                    <option value="Sintomas">Sintomas e Mudanças Menstruais</option>
-                                    <option value="Sustentabilidade">Sustentabilidade Ambiental</option>
-                                    <option value="Pobreza Menstrual">Pobreza Menstrual</option>
-                                    <option value="Outros">Outros</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="topico_personalizado" class="form-label">Ou digite um tópico personalizado</label>
-                                <input type="text" class="form-control" id="topico_personalizado" name="topico_personalizado" 
-                                       placeholder="Digite um tópico personalizado">
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="conteudo" class="form-label">Conteúdo da Matéria *</label>
-                            <textarea class="form-control" id="conteudo" name="conteudo" rows="12" required 
-                                      placeholder="Digite o conteúdo completo da matéria..."></textarea>
-                            <div class="form-text">
-                                Use este espaço para escrever o conteúdo completo da sua matéria. Você pode usar HTML básico para formatação.
-                            </div>
-                        </div>
-
-                        <div class="alert alert-info">
-                            <small>
-                                <i class="fas fa-info-circle me-2"></i>
-                                A matéria será publicada imediatamente após o envio.
-                            </small>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="fas fa-times me-2"></i>Cancelar
-                        </button>
-                        <button type="submit" name="nova_materia" class="btn btn-success">
-                            <i class="fas fa-save me-2"></i>Publicar Matéria
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+                
     <?php
     require("../include/copyright.php");
     require("../include/bibliotecajava.php");
@@ -669,30 +463,11 @@ $mysqli->close();
         // Implementar visualização de usuário
     }
 
-    function editUser(userId) {
-        alert('Editar usuário ID: ' + userId);
-        // Implementar edição de usuário
-    }
+   
 
     function deleteUser(userId) {
         if(confirm('Tem certeza que deseja excluir este usuário?')) {
             window.location.href = 'admin_actions.php?action=delete_user&user_id=' + userId;
-        }
-    }
-
-    function viewMateria(materiaId) {
-        alert('Visualizar matéria ID: ' + materiaId);
-        // Implementar visualização de matéria
-    }
-
-    function editMateria(materiaId) {
-        alert('Editar matéria ID: ' + materiaId);
-        // Implementar edição de matéria
-    }
-
-    function deleteMateria(materiaId) {
-        if(confirm('Tem certeza que deseja excluir esta matéria?')) {
-            window.location.href = 'admin_actions.php?action=delete_materia&materia_id=' + materiaId;
         }
     }
 
